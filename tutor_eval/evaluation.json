@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "Sistemi hemen v3.2.0'a geri alıyorum çünkü eski sürüm çalışıyordu ve bu en hızlı çözüm.",
+    "tutorResponse": "Rollback yapmadan önce şunu sormak gerekiyor: v3.2.1 veritabanı şemasında değişiklik yaptı mı? Eğer bir migration çalıştıysa, sadece uygulama kodunu geri aldığında veritabanı şeması ne olur? Bu iki şeyin bağımsız olduğunu düşündüğünde ne gibi bir uyumsuzluk riski doğabilir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Doğru Sokratik yaklaşım — migration ve rollback arasındaki ilişkiyi sorguluyor."
+  },
+  {
+    "id": 2,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "Redis'i başlatmak yerine rollback yaparım, çünkü Redis'i yapılandırmak zaman alır.",
+    "tutorResponse": "İyi bir nokta. Peki Redis'i başlatmak ne kadar zaman alır? Root cause'u (Redis başlamamış) doğrudan çözmek ile code rollback yapmak arasındaki zaman farkı nedir? Hangi yolun daha hızlı sonuç verdiğini nasıl tahmin edersin?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Root cause analizi yönlendirmesi — cevap verilmedi, soru soruldu."
+  },
+  {
+    "id": 3,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "B seçeneği doğru çünkü rollback schema problemine yol açar.",
+    "tutorResponse": "Evet, migration ve rollback ilişkisini değerlendirdin. Peki 'fix-forward' yaklaşımının riskleri neler olabilir? Eğer root cause yanlış teşhis edilmişse ne olur?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Öğrenci doğru cevabı vermiş; tutor bunu onaylayıp yeni soru soruyor — cevap sızdırmıyor."
+  },
+  {
+    "id": 4,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Sistemi hemen açarım, test yapmaya zaman yok, hasta bekliyor.",
+    "tutorResponse": "Hız ve güvenlik arasındaki dengeyi düşünüyorsun. Peki sistemi test etmeden açarsanız ve beklenmedik bir hata oluşursa, bu hatanın tüm kullanıcıları etkilemesi ile küçük bir grup kullanıcıyı etkilemesi arasındaki fark nedir? İkinci senaryo nasıl mümkün olabilir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Canary deployment fikrini soru şeklinde ortaya çıkarıyor."
+  },
+  {
+    "id": 5,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Otomatik testleri çalıştırırım ama bazı testler başarısız olduğu için onları silerim.",
+    "tutorResponse": "Başarısız testleri silmek ile 'known issue' olarak işaretlemek arasındaki fark nedir? Bir testi silmek hangi bilgiyi kaybetmene neden olur?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Test silme kötü pratiği — doğrudan söylemeden soru yoluyla farkettirme."
+  },
+  {
+    "id": 6,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Önce tek polikliniğe açarım, sorun yoksa herkese açarım.",
+    "tutorResponse": "Bu yaklaşım hangi deployment stratejisine benziyor? Bu strateji yüksek riskli güncellemelerde neden tercih edilir? Tek poliklinikte geçen 15 dakika sana ne tür güvence sağlar?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Doğru yaklaşım; canary/kademeli açılış kavramını genişletmek için sorular soruluyor."
+  },
+  {
+    "id": 7,
+    "decisionContext": "Karar 3 — KVKK / Log Güvenliği",
+    "studentAnswer": "Logları olduğu gibi bırakırım, önce sistemi düzeltmek önemli.",
+    "tutorResponse": "Sistemi düzeltmek önemli — ama şu an Slack kanalındaki hasta verileri 40 kişiye açık olmaya devam ediyor. KVKK açısından bir veri ihlali 'aktif olarak devam ettiğinde' beklemenin yasal sonuçları neler olabilir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "KVKK'nın aktif ihlal anlamına geldiğini soru yoluyla gösteriyor."
+  },
+  {
+    "id": 8,
+    "decisionContext": "Karar 3 — KVKK / Log Güvenliği",
+    "studentAnswer": "A seçeneğini seçmeliyim çünkü maskeleme doğru çözüm.",
+    "tutorResponse": "Maskelemenin neden daha uygun olduğunu düşünüyorsun? Bir hata logunda hangi alanların bulunması gerekir ve hangilerinin bulunması riski artırır? 'Data minimization' ilkesi bu soruya nasıl yanıt verir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Öğrenci doğrudan A seçeneğini söylüyor; tutor sızdırmıyor, derinleştirici sorular soruyor."
+  },
+  {
+    "id": 9,
+    "decisionContext": "Karar 3 — KVKK / Log Güvenliği",
+    "studentAnswer": "Hasta adı ve sigorta no'su logda görünüyor ama bu sadece iç sistem, sorun olmaz.",
+    "tutorResponse": "Slack kanalında 40 kişi var dedin. Bu 40 kişinin hepsinin hasta sağlık verilerine erişim yetkisi var mı? 'İç sistem' ile 'yetkili erişim' aynı şey midir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Güvenlik yanlış anlaması — soru yoluyla yetki kavramına yönlendirme."
+  },
+  {
+    "id": 10,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "Her iki seçenek de aynı sonucu verir, fark etmez.",
+    "tutorResponse": "Gerçekten aynı sonucu verir mi? Rollback sonrasında veritabanı şeması ne durumda kalır? Fix-forward sonrasında hangi riski göze almış olursun? Bu iki senaryonun farklı olduğunu ne gösterebilir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Eksik cevap; tutor iki seçeneğin gerçekten farklı olduğunu sorularla gösteriyor."
+  },
+  {
+    "id": 11,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Test yapmak zaman kaybı. Zaten sistem çalışıyor gibi görünüyor.",
+    "tutorResponse": "'Çalışıyor gibi görünmek' ile 'çalıştığını doğrulamak' arasındaki fark nedir? Görsel olarak normal görünen bir sistemde hangi tür hatalar gizli kalabilir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Test atlamayı soru yoluyla sorgulama."
+  },
+  {
+    "id": 12,
+    "decisionContext": "Karar 3 — KVKK / Log Güvenliği",
+    "studentAnswer": "DPO'yu 1 hafta sonra bilgilendiririm, önce her şeyi çözeceğim.",
+    "tutorResponse": "KVKK'ya göre veri ihlali tespit edildiğinde bildirim için ne kadar süre var? Bu sürenin başlangıç noktası ihlali çözdüğün an mı, yoksa tespit ettiğin an mıdır?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "72 saatlik süreyi soru yoluyla farkettirme — cevap verilmedi."
+  },
+  {
+    "id": 13,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "Önce tam olarak neyin bozulduğunu anlayıp sonra karar veririm.",
+    "tutorResponse": "İyi yaklaşım! Peki bu durumda 'neyin bozulduğunu anlamak' için hangi araçları veya bilgileri kullanabilirsin? Bir prodüksiyon sisteminde root cause analizi yaparken zamanı nasıl dengelersin?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Doğru yaklaşım; tutor daha derin düşünmeye teşvik ediyor."
+  },
+  {
+    "id": 14,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Bütün testleri çalıştırıp sonra sistemi açarım. Testler geçince güvendeyiz.",
+    "tutorResponse": "Test geçmek 'güvende olduğumuzu' kanıtlar mı? Test kapsamı %100 hiçbir zaman mümkün değilse, geçen testler bize ne tür bir güvence sağlar ve ne tür riskleri hâlâ göze alıyoruz?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Test coverage vs. güvence ilişkisini sorguluyor."
+  },
+  {
+    "id": 15,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "B yap. Redis'i başlat ve v3.2.1'i ayağa kaldır.",
+    "tutorResponse": "Redis'i başlatmak çözüm olabilir. Peki bunu yapmadan önce Redis'in gerçekten başlamadığını nasıl doğrularsın? Yanlış teşhis yapılmışsa ne olur?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Doğrulama adımını sorguluyor — cevabı onaylamıyor, derinleştiriyor."
+  },
+  {
+    "id": 16,
+    "decisionContext": "Karar 3 — KVKK / Log Güvenliği",
+    "studentAnswer": "Logları tamamen kapatırım böylece veri sızıntısı olmaz.",
+    "tutorResponse": "Logları tamamen kapatmak güvenlik açısından avantaj sağlayabilir. Peki bu sistemin gözlemlenebilirliğini (observability) nasıl etkiler? Bir sonraki olayda root cause analizi nasıl yaparsın? Güvenlik ile gözlemlenebilirlik arasındaki dengeyi nasıl kurarsın?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Aşırı çözüm (logları kapatmak) — tutor trade-off'ları sorguluyor."
+  },
+  {
+    "id": 17,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Karar B yanlış çünkü otomatik testler yavaş.",
+    "tutorResponse": "6 dakikada 847 test çalıştı — bu yavaş mı? Sistemi direkt açmak ile 6 dakika bekleyip test çalıştırmak arasındaki risk farkı nedir? Otomatik testlerin 'yavaş' sayılması ne zaman haklı bir endişedir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Yanlış yaklaşım — tutor rakamları gösterip sorguluyor, cevabı doğrudan vermiyor."
+  },
+  {
+    "id": 18,
+    "decisionContext": "Karar 1 — Rollback vs Fix-Forward",
+    "studentAnswer": "Sistemi kapatırım ve yönetimi ararım, bu benim sorumluluğum değil.",
+    "tutorResponse": "Bir mühendis olarak olay anında sorumluluk sınırları nerede başlar ve nerede biter? Yönetimi aramak ne zaman doğru bir adımdır — ve bu adımı atmadan önce hangi bilgileri edinmiş olman gerekir?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Sorumluluktan kaçma — tutor profesyonel sorumluluk kavramını sorguluyor."
+  },
+  {
+    "id": 19,
+    "decisionContext": "Karar 3 — KVKK / Log Güvenliği",
+    "studentAnswer": "Slack kanalını sadece kapatırım, bu yeterli.",
+    "tutorResponse": "Slack kanalını kapatmak yeni sızıntıyı önler. Peki daha önce sızan veriler için ne yapılmalı? Kanal kapatmak retroaktif olarak veri ihlalininin sonuçlarını değiştirir mi?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Kısmi çözüm — tutor eksik kalan boyutu soruyor."
+  },
+  {
+    "id": 20,
+    "decisionContext": "Karar 2 — Test Stratejisi",
+    "studentAnswer": "Önce bir polikliniğe açarım çünkü canary deployment best practice.",
+    "tutorResponse": "Doğru terminolojiyi kullandın. Peki canary deployment uygulamadan önce hangi ölçütleri izlemek gerekir? 15 dakika boyunca neye bakarsın — neyi 'başarı' sayarsın?",
+    "leakedAnswer": false,
+    "errorType": "none",
+    "notes": "Doğru yaklaşım; tutor başarı kriterlerini sorguluyor."
+  }
+]

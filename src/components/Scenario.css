@@ -1,0 +1,118 @@
+.scenario-screen {
+  min-height: 100vh;
+  padding: 1rem 0 4rem;
+  background: var(--color-bg);
+}
+
+/* Topbar */
+.scenario-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar-app-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.topbar-incident {
+  font-size: 0.75rem;
+}
+
+/* Intro */
+.intro-panel {
+  padding-top: 0.5rem;
+}
+
+.intro-alert {
+  border-color: rgba(248, 81, 73, 0.5);
+  background: rgba(248, 81, 73, 0.06);
+}
+
+.intro-alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.incident-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.intro-title {
+  font-size: 1.3rem;
+}
+
+.scenario-description {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.7;
+}
+
+.system-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.status-item {
+  padding: 0.75rem;
+}
+
+.status-key {
+  display: block;
+  font-size: 0.65rem;
+  margin-bottom: 0.25rem;
+}
+
+.status-val {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* Previous decisions */
+.prev-decisions {
+  background: rgba(88, 166, 255, 0.04);
+  border-color: rgba(88, 166, 255, 0.2);
+}
+
+.prev-decision-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.25rem 0;
+  color: var(--color-text-secondary);
+}
+
+.prev-dec-num {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  min-width: 1.2rem;
+}
+
+.prev-dec-text {
+  flex: 1;
+}
+
+.prev-dec-risk {
+  font-size: 0.8rem;
+}

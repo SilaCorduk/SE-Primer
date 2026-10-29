@@ -1,0 +1,178 @@
+.final-screen {
+  min-height: 100vh;
+  padding: 1rem 0 4rem;
+  background: var(--color-bg);
+}
+
+.final-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.5rem;
+}
+
+.topbar-app-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.outcome-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.outcome-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.outcome-title {
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-weight: 800;
+}
+
+.outcome-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.outcome-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.875rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.875rem;
+}
+
+.outcome-summary {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  text-align: left;
+}
+
+.status-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.status-card-item {
+  padding: 0.875rem;
+}
+
+.status-card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.status-card-value {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+/* Decisions review */
+.decisions-review {}
+
+.review-title {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.review-item {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.review-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.review-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.review-num {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.review-topic {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.review-risk {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.review-choice {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.review-label {
+  font-style: italic;
+}
+
+/* Lessons */
+.lessons {}
+
+.lessons-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.875rem;
+}
+
+.lessons-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lesson-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.lesson-bullet {
+  color: var(--color-accent);
+  font-size: 0.6rem;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+/* Personal note */
+.personal-note {
+  background: rgba(88, 166, 255, 0.04);
+  border-color: rgba(88, 166, 255, 0.2);
+}
+
+.final-actions {}
